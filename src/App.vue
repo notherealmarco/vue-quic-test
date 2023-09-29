@@ -11,7 +11,7 @@ onMounted(() => {
   console.log(`Initial request: ${proto}.`)
 
   setTimeout(async function () {
-    while (count.value < 100 && proto !== "h3") {
+    while (count.value < 30 && proto !== "h3") {
       console.log(count.value)
 
       const response = await fetch("/?id=" + Math.floor(Math.random() * 1000000));
@@ -20,13 +20,16 @@ onMounted(() => {
       count.value++
     }
 
-    count.value = performance.getEntries().length
+    count.vaule = 0
 
     performance.getEntries().forEach(entry => {
-      if (entry.nextHopProtocol === "h3") h3_count.value++
-      else if (entry.nextHopProtocol === undefined) count.value--
+      if (entry.nextHopProtocol !== undefined) {
+        if (entry.nextHopProtocol === "h3" && entry.transferSize > 0) h3_count.value++
 
-      if (entry.nextHopProtocol !== "") proto = entry.nextHopProtocol
+        if (entry.transferSize > 0) count.vaule++
+
+        if (entry.nextHopProtocol !== "") proto = entry.nextHopProtocol
+      }
     });
 
     if (proto === "h3") proto = "HTTP/3"
