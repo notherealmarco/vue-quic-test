@@ -1,6 +1,12 @@
 @import './base.css';
 
+body{
+  display: flex;
+  place-items: center;
+}
+
 #app {
+  display: flex;
   max-width: 1500px;
   margin: 0 auto;
   padding: 2rem;
@@ -23,10 +29,6 @@ a,
 }
 
 @media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
 
   #app {
     display: flex;
