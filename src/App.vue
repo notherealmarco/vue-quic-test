@@ -70,7 +70,7 @@ onMounted(() => {
       <div v-else-if="proto === 'HTTP/2'">
         <h1>Your browser used <span class="blue bold">{{ proto }}</span></h1>
         <div class="bottom-text">It appears that your network firewall is <span class="red bold">blocking QUIC</span>, or
-          your browser is just not using it 😢</div>
+          your browser is just not using it 😢<br /><br />Sometimes re-launching the browser helps.</div>
       </div>
 
       <div v-else-if="proto === ''">
