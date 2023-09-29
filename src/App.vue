@@ -72,7 +72,7 @@ onMounted(() => {
     </div>
   </main>
   <foooer class="footer">
-    <a href="https://quicwg.org" target="_blank">Cool, but what the hell is QUIC?</a> | Powered by <a
+    <a href="https://quicwg.org" target="_blank">Cool, but what the hell is QUIC?</a><br />Powered by <a
       style="text-decoration: underline" href="https://github.com/notherealmarco/vue-quic-test"
       target="_blank">vue-quic-test</a>
   </foooer>
@@ -128,6 +128,14 @@ h1 {
 
   .logo {
     margin: 0 2rem 0 0;
+  }
+
+  h1 {
+    font-size: 2.2rem;
+  }
+
+  .bottom-text {
+    font-size: 1.15rem;
   }
 }
 </style>
