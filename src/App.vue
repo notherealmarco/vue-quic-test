@@ -72,7 +72,7 @@ onMounted(() => {
     </div>
   </main>
   <foooer class="footer">
-    <a href="https://quicwg.org" target="_blank">Cool, but what the hell is QUIC?</a><br />Powered by <a
+    <a href="https://quicwg.org" target="_blank">Cool, but what the hell is QUIC?</a> | Powered by <a
       style="text-decoration: underline" href="https://github.com/notherealmarco/vue-quic-test"
       target="_blank">vue-quic-test</a>
   </foooer>
@@ -112,6 +112,7 @@ h1 {
 }
 
 .footer {
+  font-size: 0.9rem;
   text-align: center;
   margin-bottom: 1rem;
   bottom: 0;
