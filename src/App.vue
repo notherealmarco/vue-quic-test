@@ -30,13 +30,14 @@ onMounted(() => {
 
         if (entry.transferSize > 0) count.value++
 
-        if (entry.nextHopProtocol !== "") proto = entry.nextHopProtocol
+        if (proto != "h3" && entry.nextHopProtocol !== "") proto = entry.nextHopProtocol
 
       }
     });
 
     console.log(count.value + " requests sent, " + h3_count.value + " used QUIC")
 
+    // Set protocol names
     if (proto === "h3") proto = "HTTP/3"
     else if (proto === "h2") proto = "HTTP/2"
     else if (proto === "h2c") proto = "HTTP/2"
