@@ -58,7 +58,7 @@ onMounted(() => {
     <div v-if="done">
 
       <div v-if="proto === 'HTTP/3'">
-        <h1>Your are using <span class="green bold">{{ proto }} 😉</span></h1>
+        <h1>Your browser supports <span class="green bold">{{ proto }} 😉</span></h1>
 
         <div v-if="h3_count == count" class="bottom-text">Congratulations! Your browser sent <span
             class="green bold">every request</span> by using QUIC!</div>
@@ -68,13 +68,18 @@ onMounted(() => {
       </div>
 
       <div v-else-if="proto === 'HTTP/2'">
-        <h1>Your are using <span class="blue bold">{{ proto }}</span></h1>
+        <h1>Your browser used <span class="blue bold">{{ proto }}</span></h1>
         <div class="bottom-text">It appears that your network firewall is <span class="red bold">blocking QUIC</span>, or
           your browser is just not using it 😢</div>
       </div>
 
+      <div v-else-if="proto === ''">
+        <h1>Browser not supported</h1>
+        <div class="bottom-text">Your browser didn't report the protocol version 😢. You can open an issue <a style="text-decoration: underline" href="https://github.com/notherealmarco/vue-quic-test/issues">on GitHub</a>.</div>
+      </div>
+
       <div v-else>
-        <h1>Your are using <span class="red bold">{{ proto }} 😱</span></h1>
+        <h1>Your browser used <span class="red bold">{{ proto }} 😱</span></h1>
         <div class="bottom-text">This is really bad! Your browser is using a veeeery old protocol...</div>
       </div>
 
