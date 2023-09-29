@@ -14,7 +14,7 @@ onMounted(() => {
     while (count.value < 100 && proto !== "h3") {
       console.log(count.value)
 
-      const response = await fetch("/?id=" + count.value);
+      const response = await fetch("/?id=" + Math.floor(Math.random() * 1000000));
 
       proto = performance.getEntries()[performance.getEntries().length - 1].nextHopProtocol
       count.value++
