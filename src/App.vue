@@ -25,6 +25,8 @@ onMounted(() => {
     performance.getEntries().forEach(entry => {
       if (entry.nextHopProtocol === "h3") h3_count.value++
       else if (entry.nextHopProtocol === undefined) count.value--
+
+      if (entry.nextHopProtocol !== "") proto = entry.nextHopProtocol
     });
 
     if (proto === "h3") proto = "HTTP/3"
