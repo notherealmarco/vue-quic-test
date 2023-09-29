@@ -1,0 +1,23 @@
+# this is an example docker-compose script to run the project under the Traefik reverse proxy
+# Adjust the file as needed
+
+version: "3.0"
+services:
+  web:
+    build: .
+    hostname: quictest
+    networks:
+      - proxynet
+
+    # If you're using Traefik, adjust the labels as needed. Remove them if you're going to use a different reverse proxy
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.quictest.entrypoints=web, websecure"
+      - "traefik.http.routers.quictest.rule=Host(`quic-test.marcorealacci.me`)"
+      - "traefik.http.routers.quictest.tls=true"
+      - "traefik.http.routers.quictest.tls.certresolver=production"
+
+# You should use your reverse proxy's network here
+networks:
+  proxynet:
+    external: true
