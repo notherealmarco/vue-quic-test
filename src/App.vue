@@ -28,9 +28,10 @@ onMounted(() => {
       if (entry.nextHopProtocol !== undefined) {
         if (entry.nextHopProtocol === "h3" && entry.transferSize > 0) h3_count.value++
 
-        if (entry.transferSize > 0) count.value++
-
-        if (proto != "h3" && entry.nextHopProtocol !== "") proto = entry.nextHopProtocol
+        if (entry.transferSize > 0) {
+          count.value++
+          if (proto != "h3" && entry.nextHopProtocol !== "") proto = entry.nextHopProtocol
+        }
 
       }
     });
