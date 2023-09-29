@@ -12,7 +12,7 @@ onMounted(() => {
 
   setTimeout(async function () {
     while (count.value < 30 && proto !== "h3") {
-      console.log(count.value)
+      console.log("Sending request " + count.value)
 
       const response = await fetch("/?id=" + Math.floor(Math.random() * 1000000));
 
@@ -20,17 +20,22 @@ onMounted(() => {
       count.value++
     }
 
-    count.vaule = 0
+    count.value = 0
+
+    console.log("Analyzing requests...")
 
     performance.getEntries().forEach(entry => {
       if (entry.nextHopProtocol !== undefined) {
         if (entry.nextHopProtocol === "h3" && entry.transferSize > 0) h3_count.value++
 
-        if (entry.transferSize > 0) count.vaule++
+        if (entry.transferSize > 0) count.value++
 
         if (entry.nextHopProtocol !== "") proto = entry.nextHopProtocol
+
       }
     });
+
+    console.log(count.value + " requests sent, " + h3_count.value + " used QUIC")
 
     if (proto === "h3") proto = "HTTP/3"
     else if (proto === "h2") proto = "HTTP/2"
